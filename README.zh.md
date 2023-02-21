@@ -1,10 +1,7 @@
 # Makefile 小工具
 
-用一系列 makefile target 来增加你的 Makefile。
-
-如果你不想在项目中引入 `cmake`, `xmake`, `mmake`, `emake` 等高级的 make 工具，仅使用系统自带的 `make` 命令。
-
-makefile-utils 能帮助写更少的代码，提供更多的功能。
+makefile-utils 能帮助你使用 `make` 命令进行开发。
+它提供一系列 Makefile Target 来增强你的 Makefile。
 
 [English](./README.md) | [中文](./README.zh.md)
 
@@ -44,6 +41,7 @@ git clone --depth 1 --branch "$VERSION" https://github.com/adoyle-h/makefile-uti
 <!-- editorconfig-checker-disable -->
 
 ```sh
+# 注意: 这个目录拷贝到你项目里的路径必须是 makefile-utils
 cp -r makefile-utils $your_project
 
 printf '\ninclude ./makefile-utils/*.mk\n' >> $your_project/Makefile

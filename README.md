@@ -1,11 +1,7 @@
 # Makefile Utils
 
-A series of makefile targets for enhancing your Makefile.
-
-If you don't want to include advanced make tools like `cmake`, `xmake`, `mmake`, `emake` in your project,
-just use the builtin `make` command in system.
-
-The makefile-utils will be helpful to write less codes and do more.
+The makefile-utils is helpful for developing with `make` command.
+It provides a series of Makefile Targets for enhancing your Makefile.
 
 [English](./README.md) | [中文](./README.zh.md)
 
@@ -45,6 +41,7 @@ git clone --depth 1 --branch "$VERSION" https://github.com/adoyle-h/makefile-uti
 <!-- editorconfig-checker-disable -->
 
 ```sh
+# Notice: the directory path must be 'makefile-utils' in your project
 cp -r makefile-utils $your_project
 
 printf '\ninclude ./makefile-utils/*.mk\n' >> $your_project/Makefile
