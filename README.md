@@ -2,6 +2,11 @@
 
 A series of makefile targets for enhancing your Makefile.
 
+If you don't want to include advanced make tools like `cmake`, `xmake`, `mmake`, `emake` in your project,
+just use the builtin `make` command in system. The makefile-utils will be helpful.
+
+[English](./README.md) | [中文](./README.zh.md)
+
 ## Feature
 
 ![make-help.png](https://media.githubusercontent.com/media/adoyle-h/_imgs/master/github/makefile-utils/make-help.png)
@@ -57,13 +62,13 @@ make help
 
 ### make help
 
-By default, it only shows target name. Add `@desc {description}` before target for printing description.
+By default, it only shows target name. Add `@desc {description}` **at the previous line of target** for printing description.
 
-Do not support makefile functions like `$(target):`. You can add `@target {name} {description}` in Makefile.
+It does not print target defined with makefile functions like `$(target):`. But you can add `@target {name} {description}` in Makefile.
 
 ### make semver-*
 
-`make semver-major` only print version. You can call the target in your Makefile.
+`make semver-major` only print next major version. You can call the target in your Makefile.
 
 For example, to replace `VERSION=v...` in README file.
 
@@ -78,6 +83,24 @@ $(BUMP_TARGETS):
 	@sed -i.bak -E "s/^VERSION=.+/VERSION=v$$(cat VERSION)/" README.md
 	@rm README.md.bak VERSION
 ```
+
+### make md5
+
+To generate .md5 file for each files in the specified directory.
+
+Defaults to the files in `./dist`. But you can change it by `make md5 DIST=./dist`.
+
+### make md5-check
+
+Checks the md5 of the file in the specified directory.
+
+Defaults to the files in `./dist`. But you can change it by `make md5 DIST=./dist`.
+
+### More makefile target...
+
+More handy makefile targets will be added later.
+
+Welcome to talk requirements with me in [Discussion](https://github.com/adoyle-h/makefile-utils/discussions).
 
 ## Copyright and License
 
