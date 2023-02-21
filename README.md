@@ -3,7 +3,9 @@
 A series of makefile targets for enhancing your Makefile.
 
 If you don't want to include advanced make tools like `cmake`, `xmake`, `mmake`, `emake` in your project,
-just use the builtin `make` command in system. The makefile-utils will be helpful.
+just use the builtin `make` command in system.
+
+The makefile-utils will be helpful to write less codes and do more.
 
 [English](./README.md) | [中文](./README.zh.md)
 
@@ -68,8 +70,9 @@ It does not print target defined with makefile functions like `$(target):`. But 
 
 ### make semver-*
 
-`make semver-major` only print next major version. You can call the target in your Makefile.
+`make semver-major` only print next major version. And also the `make semver-minor` and `make semver-patch`.
 
+You can call the target in other targets.
 For example, to replace `VERSION=v...` in README file.
 
 ```make

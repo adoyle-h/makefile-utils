@@ -3,11 +3,12 @@
 用一系列 makefile target 来增加你的 Makefile。
 
 如果你不想在项目中引入 `cmake`, `xmake`, `mmake`, `emake` 等高级的 make 工具，仅使用系统自带的 `make` 命令。
-makefile-utils 能帮上一点小忙。
+
+makefile-utils 能帮助写更少的代码，提供更多的功能。
 
 [English](./README.md) | [中文](./README.zh.md)
 
-## Feature
+## 功能
 
 ![make-help.png](https://media.githubusercontent.com/media/adoyle-h/_imgs/master/github/makefile-utils/make-help.png)
 
@@ -68,8 +69,9 @@ make help
 
 ### make semver-*
 
-`make semver-major` 只打印下一个 major 版本号。你可以在某个 target 中调用这个 target。
+`make semver-major` 只打印下一个 major 版本号。另外还有 `make semver-minor` 和 `make semver-patch`。
 
+你可以在其他 target 中调用这个 target。
 比如，替换 README 文件里的 `VERSION=v...`。
 
 ```make
