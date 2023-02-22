@@ -21,7 +21,7 @@ You can install it by `curl` or `git`.
 ### Curl
 
 ```sh
-VERSION=v0.1.0
+VERSION=v0.2.0
 curl -LO "https://github.com/adoyle-h/makefile-utils/releases/download/$VERSION/makefile-utils.tgz{,.md5}"
 
 # Check files integrity
@@ -33,7 +33,7 @@ tar -xzf ./makefile-utils.tgz
 ### Git
 
 ```sh
-VERSION=v0.1.0
+VERSION=v0.2.0
 git clone --depth 1 --branch "$VERSION" https://github.com/adoyle-h/makefile-utils.git
 ```
 
