@@ -15,4 +15,9 @@ BUMP_TARGETS := $(addprefix bump-,major minor patch)
 $(BUMP_TARGETS):
 	@$(MAKE) $(subst bump-,semver-,$@) > VERSION
 	@sed -i.bak -E "s/^VERSION=.+/VERSION=v$$(cat VERSION)/" README.md
-	@rm README.md.bak VERSION
+	@rm README.md.bak
+
+.PHONY: changelog
+# @desc Generate and update the CHANGELOG file
+changelog:
+	$(MAKE) CHANGELOG NEXT_VERSION=$(shell cat VERSION)

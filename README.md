@@ -84,6 +84,30 @@ $(BUMP_TARGETS):
 	@rm README.md.bak VERSION
 ```
 
+### make CHANGELOG
+
+To generate a CHANGELOG file and update it.
+
+Do not run `make CHANGELOG` directly. Add below codes in your Makefile.
+
+```sh
+.PHONY: changelog
+changelog:
+	$(MAKE) CHANGELOG NEXT_VERSION=$(shell cat VERSION)
+```
+
+To update the CHANGELOG, just `echo "0.1.0" > VERSION` and run `make changelog`.
+
+Read [the Makefile of makefile-utils](./Makefile) for reference.
+
+You can change the output of CHANGELOG file.
+
+```sh
+.PHONY: changelog
+changelog:
+	$(MAKE) CHANGELOG NEXT_VERSION=0.1.0 OUTPUT=change_log.md
+```
+
 ### make md5
 
 To generate .md5 file for each files in the specified directory.

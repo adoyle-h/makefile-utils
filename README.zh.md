@@ -65,6 +65,30 @@ make help
 
 它不会打印用 makefile 函数定义的 target，比如 `$(target):`。但你可以在 makefile 里添加 `@target {name} {description}`。
 
+### make CHANGELOG
+
+生成 CHANGELOG 文件，并更新它。
+
+别直接运行 `make CHANGELOG`。把下面的代码加入到你的 Makefile。
+
+```sh
+.PHONY: changelog
+changelog:
+	$(MAKE) CHANGELOG NEXT_VERSION=$(shell cat VERSION)
+```
+
+然后执行 `echo "0.1.0" > VERSION` 然后 `make changelog` 就能更新 CHANGELOG 文件了。
+
+阅读 [makefile-utils 的 Makefile](./Makefile) 作为参考。
+
+你也可以修改 CHANGELOG 文件的输出路径。
+
+```sh
+.PHONY: changelog
+changelog:
+	$(MAKE) CHANGELOG NEXT_VERSION=0.1.0 OUTPUT=change_log.md
+```
+
 ### make semver-*
 
 `make semver-major` 只打印下一个 major 版本号。另外还有 `make semver-minor` 和 `make semver-patch`。
