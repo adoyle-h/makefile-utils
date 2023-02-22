@@ -13,7 +13,8 @@ help:
 	@printf 'Usage: make %b<target>%b\n\n' '${GREEN}' '${RESET}'
 
 	@echo 'Target:'
-	@awk '/^[-_a-zA-Z0-9]+:/ { \
+	@awk '/^[-_/.a-zA-Z0-9]+:/ { \
+		if ($$1 == ".PHONY:") next; \
 		target = substr($$1, 0, index($$1, ":")-1); \
 		desc = match(lastLine, /^# @desc +(.*)/); \
 		if (desc) { \
@@ -25,6 +26,6 @@ help:
 	} { lastLine = $$0 }' $(MAKEFILE_LIST)
 
 	@# Show @target
-	@grep -h -E '^# @target [-/_a-zA-Z0-9]+' $(MAKEFILE_LIST) \
-		| sed -E 's|^# @target ([-/_a-zA-Z0-9]+) *(.*)?|\1␤\2|' | \
+	@grep -h -E '^# @target [-_/.a-zA-Z0-9]+' $(MAKEFILE_LIST) |\
+		sed -E 's|^# @target ([-_/.a-zA-Z0-9]+) *(.*)?|\1␤\2|' |\
 		awk -F '␤' '{ printf "  $(GREEN)%-$(TARGET_MAX_CHAR_NUM)s $(YELLOW)%s$(RESET)\n",$$1,$$2 }'
