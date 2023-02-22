@@ -98,6 +98,7 @@ changelog:
 
 To update the CHANGELOG, just `echo "0.1.0" > VERSION` and run `make changelog`.
 
+You can preview [the example of generated CHANGELOG](./CHANGELOG.md).
 Read [the Makefile of makefile-utils](./Makefile) for reference.
 
 You can change the output of CHANGELOG file.

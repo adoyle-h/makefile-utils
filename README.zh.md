@@ -79,6 +79,7 @@ changelog:
 
 然后执行 `echo "0.1.0" > VERSION` 然后 `make changelog` 就能更新 CHANGELOG 文件了。
 
+你可以预览[生成后的 CHANGELOG 例子](./CHANGELOG.md)。
 阅读 [makefile-utils 的 Makefile](./Makefile) 作为参考。
 
 你也可以修改 CHANGELOG 文件的输出路径。
