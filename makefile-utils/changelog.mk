@@ -1,14 +1,17 @@
 # Source Code: https://github.com/adoyle-h/makefile-utils
 # vi: ft=make
 
+# @hide
 makefile-utils/chglog:
 	@mkdir -p '$@'
 
 makefile-utils/chglog/CHANGELOG.tpl.md: CHGLOG_TPL ?= https://gist.githubusercontent.com/adoyle-h/9d466c80bf419ceba278316198eb5690/raw/32d336d48d7827cfa40a413d9932e6e4677acf3d/CHANGELOG.tpl.md
+# @hide
 makefile-utils/chglog/CHANGELOG.tpl.md:
 	curl -#Lo '$@' '$(CHGLOG_TPL)'
 
 makefile-utils/chglog/config.yml: CHGLOG_CONFIG ?= https://gist.githubusercontent.com/adoyle-h/9d466c80bf419ceba278316198eb5690/raw/32d336d48d7827cfa40a413d9932e6e4677acf3d/config.yml
+# @hide
 makefile-utils/chglog/config.yml:
 ifeq (,$(shell git config --get remote.origin.url | sed -E 's|.+github.com:(.+).git|\1|'))
 	$(error "Not found remote repo from git")
@@ -19,6 +22,7 @@ endif
 		rm '$@'.bak
 
 .PHONY: git-chglog
+# @hide
 git-chglog:
 ifeq (, $(shell which git-chglog))
 	$(error "Not found git-chglog in PATH. Please install it by yourself. See https://github.com/git-chglog/git-chglog")

@@ -2,7 +2,7 @@
 
 SEMVER_BIN ?= makefile-utils/semver
 
-# @target makefile-utils/semver  Download semver tool
+# @hide @target makefile-utils/semver  Download semver tool
 ${SEMVER_BIN}:
 	@mkdir -p $$(dirname '$@')
 	@curl -sSLo '$@' https://raw.githubusercontent.com/fsaintjacques/semver-tool/master/src/semver
