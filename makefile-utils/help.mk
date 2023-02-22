@@ -15,6 +15,8 @@ help:
 	@echo 'Target:'
 	@awk '/^[-_/.a-zA-Z0-9]+:/ { \
 		if ($$1 == ".PHONY:") next; \
+		is_hide = match(lastLine, /^# .*@hide/); \
+		if (is_hide) next; \
 		target = substr($$1, 0, index($$1, ":")-1); \
 		desc = match(lastLine, /^# @desc +(.*)/); \
 		if (desc) { \
