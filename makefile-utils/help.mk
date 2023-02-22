@@ -13,8 +13,9 @@ help:
 	@printf 'Usage: make %b<target>%b\n\n' '${GREEN}' '${RESET}'
 
 	@echo 'Target:'
-	@awk '/^[-_/.a-zA-Z0-9]+:/ { \
-		if ($$1 == ".PHONY:") next; \
+	@# https://www.gnu.org/software/make/manual/html_node/Special-Targets.html
+	@awk /^.(PHONY|SUFFIXES|DEFAULT|PRECIOUS|INTERMEDIATE|NOTINTERMEDIATE|SECONDARY|SECONDEXPANSION|DELETE_ON_ERROR|IGNORE|LOW_RESOLUTION_TIME|SILENT|EXPORT_ALL_VARIABLES|NOTPARALLEL|ONESHELL|POSIX|NOEXPORT|MAKE):/ { next } \
+		/^[-_/.a-zA-Z0-9]+:/ { \
 		is_hide = match(lastLine, /^# .*@hide/); \
 		if (is_hide) next; \
 		target = substr($$1, 0, index($$1, ":")-1); \
