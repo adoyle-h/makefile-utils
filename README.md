@@ -127,6 +127,10 @@ More handy makefile targets will be added later.
 
 Welcome to talk requirements with me in [Discussion](https://github.com/adoyle-h/makefile-utils/discussions).
 
+## Suggestion, Bug Reporting, Contributing
+
+**Before opening new Issue/Discussion/PR and posting any comments**, please read [Contributing Guidelines](https://gcg.adoyle.me/CONTRIBUTING).
+
 ## Copyright and License
 
 Copyright 2023 ADoyle (adoyle.h@gmail.com). Some Rights Reserved.
