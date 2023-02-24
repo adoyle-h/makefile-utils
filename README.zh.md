@@ -132,6 +132,12 @@ $(BUMP_TARGETS):
 
 默认目录是 `./dist`。但你可以指定其他目录 `make md5-check DIST=./dist`。
 
+### make md-check-links
+
+使用 [lychee](https://github.com/lycheeverse/lychee) 检查 markdown 文件里的死链。
+
+你可以改变默认参数 `make md-check-links LYCHEE_OPTS='--exclude ./makefile-utils --exclude-mail --timeout 3 -r 3 --exclude-link-local --insecure'`。
+
 ### 更多 makefile target...
 
 后续会补充更多方便的 makefile target。

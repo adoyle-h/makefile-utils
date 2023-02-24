@@ -134,7 +134,9 @@ Defaults to the files in `./dist`. But you can change it by `make md5 DIST=./dis
 
 ### make md-check-links
 
-Check dead links in markdown files.
+Check dead links in markdown files with [lychee](https://github.com/lycheeverse/lychee).
+
+You can override the default options by `make md-check-links LYCHEE_OPTS='--exclude ./makefile-utils --exclude-mail --timeout 3 -r 3 --exclude-link-local --insecure'`.
 
 ### More makefile target...
 
