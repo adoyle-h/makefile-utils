@@ -5,12 +5,12 @@
 makefile-utils/chglog:
 	@mkdir -p '$@'
 
-makefile-utils/chglog/CHANGELOG.tpl.md: CHGLOG_TPL ?= https://gist.githubusercontent.com/adoyle-h/9d466c80bf419ceba278316198eb5690/raw/32d336d48d7827cfa40a413d9932e6e4677acf3d/CHANGELOG.tpl.md
+makefile-utils/chglog/CHANGELOG.tpl.md: CHGLOG_TPL ?= https://gist.githubusercontent.com/adoyle-h/9d466c80bf419ceba278316198eb5690/raw/ffc2de47fb9774bfef232c7a57948af6f1cbe524/CHANGELOG.tpl.md
 # @hide
 makefile-utils/chglog/CHANGELOG.tpl.md:
 	curl -#Lo '$@' '$(CHGLOG_TPL)'
 
-makefile-utils/chglog/config.yml: CHGLOG_CONFIG ?= https://gist.githubusercontent.com/adoyle-h/9d466c80bf419ceba278316198eb5690/raw/32d336d48d7827cfa40a413d9932e6e4677acf3d/config.yml
+makefile-utils/chglog/config.yml: CHGLOG_CONFIG ?= https://gist.githubusercontent.com/adoyle-h/9d466c80bf419ceba278316198eb5690/raw/ffc2de47fb9774bfef232c7a57948af6f1cbe524/config.yml
 # @hide
 makefile-utils/chglog/config.yml:
 ifeq (,$(shell git config --get remote.origin.url | sed -E 's|.+github.com:(.+).git|\1|'))
@@ -31,7 +31,7 @@ endif
 
 .PHONY: CHANGELOG
 CHANGELOG: OUTPUT ?= CHANGELOG.md
-CHANGELOG: TEMPLATE ?= https://gist.githubusercontent.com/adoyle-h/9d466c80bf419ceba278316198eb5690/raw/32d336d48d7827cfa40a413d9932e6e4677acf3d/CHANGELOG.md
+CHANGELOG: TEMPLATE ?= https://gist.githubusercontent.com/adoyle-h/9d466c80bf419ceba278316198eb5690/raw/ffc2de47fb9774bfef232c7a57948af6f1cbe524/CHANGELOG.md
 
 # @desc Generate and update the CHANGELOG file ("make CHANGELOG NEXT_VERSION=0.1.0")
 CHANGELOG: git-chglog makefile-utils/chglog makefile-utils/chglog/CHANGELOG.tpl.md makefile-utils/chglog/config.yml
