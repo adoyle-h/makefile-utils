@@ -2,13 +2,34 @@
 
 All notable changes to this project will be documented in this file.
 
-The format is inspired by [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
+The format is inspired by [Keep a Changelog 1.0.0](https://keepachangelog.com/en/1.0.0/).
 
-The versions follow the rules of [Semantic Versioning 2.0.0](http://semver.org/spec/v2.0.0.html).
+The versions follow the rules of [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
-[Full Changes](https://github.com/adoyle-h/makefile-utils/compare/v0.2.0...HEAD)
+[Full Changes](https://github.com/adoyle-h/makefile-utils/compare/v0.3.0...HEAD)
+
+
+<a name="v0.3.0"></a>
+## v0.3.0 (2023-02-24 09:47:52 +08:00)
+
+[Full Changes](https://github.com/adoyle-h/makefile-utils/compare/v0.2.0...v0.3.0)
+
+### New Features
+
+- add target "md-check-links" ([d3d9221](https://github.com/adoyle-h/makefile-utils/commit/d3d922164838f1e2743beda91e53a2da5708dbb0))
+
+### Bug Fixes
+
+- **changelog**: change the changelog template ([1f73805](https://github.com/adoyle-h/makefile-utils/commit/1f738054bcc99cdbb2386e5c818a0ee2be112af1))
+
+### Document Changes
+
+- bump version v0.3.0 && update CHANGELOG ([4103430](https://github.com/adoyle-h/makefile-utils/commit/4103430a190fa4b12d0e71d563bd3a10665fe538))
+- update the usage ([b449a0a](https://github.com/adoyle-h/makefile-utils/commit/b449a0a3ee13b8e762fc72eecfd9645b5e2e9112))
+- add contributing ([ab3b2da](https://github.com/adoyle-h/makefile-utils/commit/ab3b2da2be2df169ca65695d17131d30fda6d278))
+- update README ([bef9531](https://github.com/adoyle-h/makefile-utils/commit/bef953144d056f451ad4b517d96a76c2c513035b))
 
 
 <a name="v0.2.0"></a>
