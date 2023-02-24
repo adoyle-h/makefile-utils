@@ -132,6 +132,10 @@ Checks the md5 of the file in the specified directory.
 
 Defaults to the files in `./dist`. But you can change it by `make md5 DIST=./dist`.
 
+### make md-check-links
+
+Check dead links in markdown files.
+
 ### More makefile target...
 
 More handy makefile targets will be added later.
