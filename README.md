@@ -44,20 +44,31 @@ git clone --depth 1 --branch "$VERSION" https://github.com/adoyle-h/makefile-uti
 # Notice: the directory path must be 'makefile-utils' in your project
 cp -r makefile-utils $your_project
 
-printf '\ninclude ./makefile-utils/*.mk\n' >> $your_project/Makefile
+{
+  echo ''
+  echo 'include ./makefile-utils/*.mk'
+  echo '.DEFAULT_GOAL := help' # You can make `help` as default target. (Skip if you don't need)
+} >> $your_project/Makefile
 
 # Or only include a file for `make help`.
-# printf '\ninclude ./makefile-utils/help.mk\n' >> $your_project/Makefile
+# { echo ''; echo 'include ./makefile-utils/help.mk'; } >> $your_project/Makefile
 
-# git ignore some files
-printf '\n/makefile-utils/*\n!/makefile-utils/*.mk\n' >> $your_project/.gitignore
+# If project contains .git
+{
+  echo ''
+  echo '/makefile-utils/*'
+  echo '!/makefile-utils/*.mk'
+} >> $your_project/.gitignore
 
-# You can make `help` as default target. (Skip if you don't need)
-printf '\n.DEFAULT_GOAL := help\n' >> $your_project/Makefile
+# If project contains .editorconfig
+cat <<EOF >> .editorconfig
 
-# To show usage
-make help
+[{Makefile,*.mk}]
+indent_style = tab
+EOF
 ```
+
+`make help` To show usage.
 
 ### make help
 

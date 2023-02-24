@@ -44,20 +44,31 @@ git clone --depth 1 --branch "$VERSION" https://github.com/adoyle-h/makefile-uti
 # 注意: 这个目录拷贝到你项目里的路径必须是 makefile-utils
 cp -r makefile-utils $your_project
 
-printf '\ninclude ./makefile-utils/*.mk\n' >> $your_project/Makefile
+{
+  echo ''
+  echo 'include ./makefile-utils/*.mk'
+  echo '.DEFAULT_GOAL := help' # 你可以把 help 设置为默认 target.（如果不需要可以跳过这行）
+} >> $your_project/Makefile
 
 # 或者只加载 help makefile
-# printf '\ninclude ./makefile-utils/help.mk\n' >> $your_project/Makefile
+# { echo ''; echo 'include ./makefile-utils/help.mk'; } >> $your_project/Makefile
 
-# git 需要忽略某些文件
-printf '\n/makefile-utils/*\n!/makefile-utils/*.mk\n' >> $your_project/.gitignore
+# 如果项目使用 git
+{
+  echo ''
+  echo '/makefile-utils/*'
+  echo '!/makefile-utils/*.mk'
+} >> $your_project/.gitignore
 
-# 你可以把 `help` 设置为默认 target. （如果你不需要可以跳过）
-printf '\n.DEFAULT_GOAL := help\n' >> $your_project/Makefile
+# 如果项目使用 .editorconfig
+cat <<EOF >> .editorconfig
 
-# 查看帮助
-make help
+[{Makefile,*.mk}]
+indent_style = tab
+EOF
 ```
+
+`make help` 查看帮助。
 
 ### make help
 
