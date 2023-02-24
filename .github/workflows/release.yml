@@ -26,3 +26,4 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           files: ./dist/*
+          body: Please read the [CHANGELOG](https://github.com/${{github.repository}}/blob/master/CHANGELOG.md#${{github.ref_name}}).
