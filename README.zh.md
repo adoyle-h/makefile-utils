@@ -44,21 +44,22 @@ git clone --depth 1 --branch "$VERSION" https://github.com/adoyle-h/makefile-uti
 # 注意: 这个目录拷贝到你项目里的路径必须是 makefile-utils
 cp -r makefile-utils $your_project
 
-{
-  echo ''
-  echo 'include ./makefile-utils/*.mk'
-  echo '.DEFAULT_GOAL := help' # 你可以把 help 设置为默认 target.（如果不需要可以跳过这行）
-} >> $your_project/Makefile
+# .DEFAULT_GOAL := help 设置 help 为默认 target.（如果不需要可以跳过这行）
+cat <<EOF >> $your_project/Makefile
+
+include ./makefile-utils/*.mk
+.DEFAULT_GOAL := help
+EOF
 
 # 或者只加载 help makefile
 # { echo ''; echo 'include ./makefile-utils/help.mk'; } >> $your_project/Makefile
 
 # 如果项目使用 git
-{
-  echo ''
-  echo '/makefile-utils/*'
-  echo '!/makefile-utils/*.mk'
-} >> $your_project/.gitignore
+cat <<EOF >> $your_project/.gitignore
+
+/makefile-utils/*
+!/makefile-utils/*.mk
+EOF
 
 # 如果项目使用 .editorconfig
 cat <<EOF >> .editorconfig
@@ -137,6 +138,8 @@ $(BUMP_TARGETS):
 使用 [lychee](https://github.com/lycheeverse/lychee) 检查 markdown 文件里的死链。
 
 你可以改变默认参数 `make md-check-links LYCHEE_OPTS='--exclude ./makefile-utils --exclude-mail --timeout 3 -r 3 --exclude-link-local --insecure'`。
+
+你可以创建 [`.lycheeignore` 文件](https://github.com/lycheeverse/lychee#ignoring-links) 来忽略某些 url。
 
 ### 更多 makefile target...
 

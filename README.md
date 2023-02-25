@@ -44,21 +44,22 @@ git clone --depth 1 --branch "$VERSION" https://github.com/adoyle-h/makefile-uti
 # Notice: the directory path must be 'makefile-utils' in your project
 cp -r makefile-utils $your_project
 
-{
-  echo ''
-  echo 'include ./makefile-utils/*.mk'
-  echo '.DEFAULT_GOAL := help' # You can make `help` as default target. (Skip if you don't need)
-} >> $your_project/Makefile
+# .DEFAULT_GOAL := help make `help` as default target. (Skip if you don't need)
+cat <<EOF >> $your_project/Makefile
+
+include ./makefile-utils/*.mk
+.DEFAULT_GOAL := help
+EOF
 
 # Or only include a file for `make help`.
 # { echo ''; echo 'include ./makefile-utils/help.mk'; } >> $your_project/Makefile
 
 # If project contains .git
-{
-  echo ''
-  echo '/makefile-utils/*'
-  echo '!/makefile-utils/*.mk'
-} >> $your_project/.gitignore
+cat <<EOF >> $your_project/.gitignore
+
+/makefile-utils/*
+!/makefile-utils/*.mk
+EOF
 
 # If project contains .editorconfig
 cat <<EOF >> .editorconfig
@@ -137,6 +138,8 @@ Defaults to the files in `./dist`. But you can change it by `make md5 DIST=./dis
 Check dead links in markdown files with [lychee](https://github.com/lycheeverse/lychee).
 
 You can override the default options by `make md-check-links LYCHEE_OPTS='--exclude ./makefile-utils --exclude-mail --timeout 3 -r 3 --exclude-link-local --insecure'`.
+
+You can exclude urls by [`.lycheeignore`](https://github.com/lycheeverse/lychee#ignoring-links).
 
 ### More makefile target...
 
