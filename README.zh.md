@@ -137,9 +137,13 @@ $(BUMP_TARGETS):
 
 使用 [lychee](https://github.com/lycheeverse/lychee) 检查 markdown 文件里的死链。
 
-你可以改变默认参数 `make md-check-links LYCHEE_OPTS='--exclude-path ./makefile-utils --exclude-all-private --exclude-mail --timeout 3 -r 3 --insecure'`。
+复制 [`lychee.toml`](./lychee.toml) 到你的目录里。
 
-你可以创建 [`.lycheeignore` 文件](https://github.com/lycheeverse/lychee#ignoring-links) 来忽略某些 url。
+你可以创建 [`.lycheeignore` 文件](https://github.com/lycheeverse/lychee#ignoring-links) 来忽略某些 url。 [例子](https://github.com/lycheeverse/lychee/blob/7e0b9e2c68118202ad75ffd3de0e113c5d5b7137/fixtures/ignore/.lycheeignore)。
+
+为了避免检查 GitHub 链接时受到访问限制。你可以设置 `GITHUB_TOKEN=xxx make md-check-links`。
+Github Token 可以在你的 [GitHub 账户设置页面](https://github.com/settings/tokens)中生成。
+令牌无需额外权限足以检查公共仓库的链接。
 
 ### 更多 makefile target...
 

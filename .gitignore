@@ -1,6 +1,7 @@
 /makefile-utils/*
 !/makefile-utils/*.mk
 /dist
+*.log
 !**/.gitkeep
 
 # Created by https://www.gitignore.io/api/vim,osx

@@ -1,0 +1,3 @@
+# Example: https://github.com/lycheeverse/lychee/blob/master/fixtures/ignore/.lycheeignore
+
+https://github.com/adoyle-h/makefile-utils/.*

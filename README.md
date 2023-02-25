@@ -137,9 +137,13 @@ Defaults to the files in `./dist`. But you can change it by `make md5 DIST=./dis
 
 Check dead links in markdown files with [lychee](https://github.com/lycheeverse/lychee).
 
-You can override the default options by `make md-check-links LYCHEE_OPTS='--exclude-path ./makefile-utils --exclude-all-private --exclude-mail --timeout 3 -r 3 --insecure'`.
+Copy the [`lychee.toml`](./lychee.toml) to your project.
 
-You can exclude urls by [`.lycheeignore`](https://github.com/lycheeverse/lychee#ignoring-links).
+You can exclude urls by [`.lycheeignore`](https://github.com/lycheeverse/lychee#ignoring-links). [example](https://github.com/lycheeverse/lychee/blob/7e0b9e2c68118202ad75ffd3de0e113c5d5b7137/fixtures/ignore/.lycheeignore).
+
+To avoid getting rate-limited while checking GitHub links. You can set `GITHUB_TOKEN=xxx make md-check-links`.
+The github token can be generated in your [GitHub account settings page](https://github.com/settings/tokens).
+A personal token with no extra permissions is enough to be able to check public repos links.
 
 ### More makefile target...
 
