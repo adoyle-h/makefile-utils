@@ -137,7 +137,7 @@ $(BUMP_TARGETS):
 
 使用 [lychee](https://github.com/lycheeverse/lychee) 检查 markdown 文件里的死链。
 
-你可以改变默认参数 `make md-check-links LYCHEE_OPTS='--exclude ./makefile-utils --exclude-mail --timeout 3 -r 3 --exclude-link-local --insecure'`。
+你可以改变默认参数 `make md-check-links LYCHEE_OPTS='--exclude-path ./makefile-utils --exclude-all-private --exclude-mail --timeout 3 -r 3 --insecure'`。
 
 你可以创建 [`.lycheeignore` 文件](https://github.com/lycheeverse/lychee#ignoring-links) 来忽略某些 url。
 
