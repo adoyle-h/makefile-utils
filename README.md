@@ -41,35 +41,30 @@ git clone --depth 1 --branch "$VERSION" https://github.com/adoyle-h/makefile-uti
 <!-- editorconfig-checker-disable -->
 
 ```sh
-# Notice: the directory path must be 'makefile-utils' in your project
-cp -r makefile-utils $your_project
-
-# .DEFAULT_GOAL := help make `help` as default target. (Skip if you don't need)
-cat <<EOF >> $your_project/Makefile
-
-include ./makefile-utils/*.mk
-.DEFAULT_GOAL := help
-EOF
-
-# Or only include a file for `make help`.
-# { echo ''; echo 'include ./makefile-utils/help.mk'; } >> $your_project/Makefile
-
-# If project contains .git
-cat <<EOF >> $your_project/.gitignore
-
-/makefile-utils/*
-!/makefile-utils/*.mk
-EOF
-
-# If project contains .editorconfig
-cat <<EOF >> .editorconfig
-
-[{Makefile,*.mk}]
-indent_style = tab
-EOF
+cd makefile-utils
+make init OUTPUT=your_project
 ```
 
-`make help` To show usage.
+or
+
+```sh
+cd makefile-utils
+chmod +x $PWD/bin/makefile-utils
+sudo ln -s $PWD/bin/makefile-utils /usr/local/bin/
+makefile-utils init your_project
+```
+
+It will do:
+
+1. Create 'makefile-utils' directory in your project.
+2. Add `include ./makefile-utils/*.mk` to your Makefile. You can delete these files that you won't use.
+3. Add `.DEFAULT_GOAL := help` to your Makefile if `.DEFAULT_GOAL` not defined in Makefile.
+  - Then run `make` equals to `make help`.
+  - You can skip it via `make init OUTPUT=your_project DEFAULT_TARGET=` or `makefile-utils init your_project ''`.
+4. Add `/makefile-utils/*` and `!/makefile-utils/*.mk` to your .gitignore if this file existed.
+5. Add `[{Makefile,*.mk}] indent_style = tab` to your .editorconfig if this file existed.
+
+Now `cd` to your project and run `make help` to show usage.
 
 ### make help
 

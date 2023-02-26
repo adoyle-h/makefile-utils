@@ -41,35 +41,30 @@ git clone --depth 1 --branch "$VERSION" https://github.com/adoyle-h/makefile-uti
 <!-- editorconfig-checker-disable -->
 
 ```sh
-# 注意: 这个目录拷贝到你项目里的路径必须是 makefile-utils
-cp -r makefile-utils $your_project
-
-# .DEFAULT_GOAL := help 设置 help 为默认 target.（如果不需要可以跳过这行）
-cat <<EOF >> $your_project/Makefile
-
-include ./makefile-utils/*.mk
-.DEFAULT_GOAL := help
-EOF
-
-# 或者只加载 help makefile
-# { echo ''; echo 'include ./makefile-utils/help.mk'; } >> $your_project/Makefile
-
-# 如果项目使用 git
-cat <<EOF >> $your_project/.gitignore
-
-/makefile-utils/*
-!/makefile-utils/*.mk
-EOF
-
-# 如果项目使用 .editorconfig
-cat <<EOF >> .editorconfig
-
-[{Makefile,*.mk}]
-indent_style = tab
-EOF
+cd makefile-utils
+make init OUTPUT=your_project
 ```
 
-`make help` 查看帮助。
+或者
+
+```sh
+cd makefile-utils
+chmod +x $PWD/bin/makefile-utils
+sudo ln -s $PWD/bin/makefile-utils /usr/local/bin/
+makefile-utils init your_project
+```
+
+它会执行以下步骤：
+
+1. 在你的项目里创建 makefile-utils
+2. 在你的 Makefile 里增加 `include ./makefile-utils/*.mk`。你可以删掉用不着的文件。
+3. 如果你的 Makefile 里没有定义 `.DEFAULT_GOAL`，会添加 `.DEFAULT_GOAL := help`。
+  - 于是运行 `make` 等同于 `make help`。
+  - 你也可以设置 `make init OUTPUT=your_project DEFAULT_TARGET=` 来跳过它。
+4. 如果你的项目里存在 .gitignore 文件，则添加 `/makefile-utils/*` 和 `!/makefile-utils/*.mk` 到文件里。
+5. 如果你的项目里存在 .editorconfig 文件，则添加 `[{Makefile,*.mk}] indent_style = tab` 到文件里。
+
+现在切换到你的项目目录，然后执行 `make help` 查看使用帮助。
 
 ### make help
 

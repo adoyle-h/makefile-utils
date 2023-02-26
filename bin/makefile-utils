@@ -1,0 +1,82 @@
+#!/usr/bin/env bash
+# vi: ft=bash
+set -o errexit
+set -o nounset
+set -o pipefail
+set -o errtrace
+(shopt -p inherit_errexit &>/dev/null) && shopt -s inherit_errexit
+
+readlinkf() { # Modified from https://github.com/ko1nksm/readlinkf
+  [ "${1:-}" ] || return 1
+
+  CDPATH='' # to avoid changing to an unexpected directory
+  local max_symlinks=40
+  local link
+  local target=$1
+
+  [ -e "${target%/}" ] || target=${1%"${1##*[!/]}"} # trim trailing slashes
+  [ -d "${target:-/}" ] && target="$target/"
+
+  cd -P . 2>/dev/null || return 1
+  while [ "$max_symlinks" -ge 0 ] && max_symlinks=$((max_symlinks - 1)); do
+    if [ ! "$target" = "${target%/*}" ]; then
+      case $target in
+        /*) cd -P "${target%/*}/" 2>/dev/null || break ;;
+        *) cd -P "./${target%/*}" 2>/dev/null || break ;;
+      esac
+      target=${target##*/}
+    fi
+
+    if [ ! -L "$target" ]; then
+      target="${PWD%/}${target:+/}${target}"
+      printf '%s\n' "${target:-/}"
+      return 0
+    fi
+
+    link=$(ls -dl -- "$target" 2>/dev/null) || break
+    target=${link#*" $target -> "}
+  done
+  return 1
+}
+
+SCRIPT_PATH="$(readlinkf "$0")"
+SCRIPT_DIR=$(dirname "$SCRIPT_PATH")
+readonly SCRIPT_PATH SCRIPT_DIR
+readonly ROOT_DIR=$(dirname "$SCRIPT_DIR")
+
+cmd_init() {
+  if (( $# > 1 )); then
+    DEFAULT_TARGET=$2
+  else
+    DEFAULT_TARGET=help
+  fi
+  make -C "$ROOT_DIR" init OUTPUT=$1 DEFAULT_TARGET=${DEFAULT_TARGET}
+}
+
+usage() {
+  cat <<EOF
+Usage: makefile-utils <CMD>
+
+Commands:
+  init <OUTPUT> [DEFAULT_TARGET]   Initialize your project.
+EOF
+}
+
+main() {
+  if (( $# == 0 )); then usage; exit 0; fi
+
+  local cmd=${1:-}
+  shift 1
+
+  case "$cmd" in
+    init)
+      cmd_init "$@"
+      ;;
+
+    *)
+      usage
+      ;;
+  esac
+}
+
+main "$@"

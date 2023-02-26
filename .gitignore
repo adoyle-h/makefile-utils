@@ -1,5 +1,6 @@
 /makefile-utils/*
 !/makefile-utils/*.mk
+/tmp
 /dist
 *.log
 !**/.gitkeep
