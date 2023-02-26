@@ -8,7 +8,36 @@ The versions follow the rules of [Semantic Versioning 2.0.0](https://semver.org/
 
 ## [Unreleased]
 
-[Full Changes](https://github.com/adoyle-h/makefile-utils/compare/v0.3.0...HEAD)
+[Full Changes](https://github.com/adoyle-h/makefile-utils/compare/v0.4.0...HEAD)
+
+
+<a name="v0.4.0"></a>
+## v0.4.0 (2023-02-26 19:01:16 +08:00)
+
+[Full Changes](https://github.com/adoyle-h/makefile-utils/compare/v0.3.0...v0.4.0)
+
+### Breaking Changes
+
+Have 1 breaking changes. Check below logs with ⚠️ .
+
+### New Features
+
+- add "make init" && add bin/makefile-utils ([d953926](https://github.com/adoyle-h/makefile-utils/commit/d953926601437b0cbc3523014f651f5e900946c4))
+
+### Bug Fixes
+
+- ⚠️  **md-check-links**: remove LYCHEE_OPTS && support GITHUB_TOKEN ([712ad61](https://github.com/adoyle-h/makefile-utils/commit/712ad61e5909bcdf88df551aa72fb9c2d2405550))
+  > You should use lychee.toml and .lycheeignore files.
+  > 
+  > Breaking Change:
+  > 
+  > - LYCHEE_OPTS not supported
+- **md-check-links**: use --exclude-path not --exclude && add --exclude-all-private option ([e45a03b](https://github.com/adoyle-h/makefile-utils/commit/e45a03beccd99b0da418c14d0d12faa7c848c4d1))
+
+### Document Changes
+
+- update usages ([7b50542](https://github.com/adoyle-h/makefile-utils/commit/7b505425d9c835f1d194b5820d62cb0ee68dcfe1))
+- update md-check-links usage ([0fac6c8](https://github.com/adoyle-h/makefile-utils/commit/0fac6c8a0c2bfcdfe894cc2194d858253e205cc1))
 
 
 <a name="v0.3.0"></a>
