@@ -8,7 +8,17 @@ The versions follow the rules of [Semantic Versioning 2.0.0](https://semver.org/
 
 ## [Unreleased]
 
-[Full Changes](https://github.com/adoyle-h/makefile-utils/compare/v0.4.0...HEAD)
+[Full Changes](https://github.com/adoyle-h/makefile-utils/compare/v0.4.1...HEAD)
+
+
+<a name="v0.4.1"></a>
+## v0.4.1 (2023-02-26 19:14:48 +08:00)
+
+[Full Changes](https://github.com/adoyle-h/makefile-utils/compare/v0.4.0...v0.4.1)
+
+### Bug Fixes
+
+- OUTPUT can be relative path for bin/makefile-utils ([943b6ef](https://github.com/adoyle-h/makefile-utils/commit/943b6ef33eed111546c91bd6bd477b0a352faf78))
 
 
 <a name="v0.4.0"></a>
