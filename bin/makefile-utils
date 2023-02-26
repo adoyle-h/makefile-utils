@@ -50,7 +50,8 @@ cmd_init() {
   else
     DEFAULT_TARGET=help
   fi
-  make -C "$ROOT_DIR" init OUTPUT=$1 DEFAULT_TARGET=${DEFAULT_TARGET}
+  local OUTPUT=$(readlinkf "$1")
+  make -C "$ROOT_DIR" init OUTPUT="$OUTPUT" DEFAULT_TARGET=${DEFAULT_TARGET}
 }
 
 usage() {
