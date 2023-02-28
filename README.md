@@ -49,7 +49,6 @@ or
 
 ```sh
 cd makefile-utils
-chmod +x $PWD/bin/makefile-utils
 sudo ln -s $PWD/bin/makefile-utils /usr/local/bin/
 makefile-utils init your_project
 ```
